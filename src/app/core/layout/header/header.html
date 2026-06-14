@@ -1,0 +1,28 @@
+<header class="fixed top-8 left-1/2 -translate-x-1/2 z-50">
+  <nav class="bg-white/80 backdrop-blur-md rounded-full shadow-lg p-2 border border-gray-100 flex justify-between items-center">
+    <ul class="flex space-x-1 items-center">
+      
+      @for (item of navigationItems; track item.id) {
+        <li>
+          <button 
+            (click)="setActiveRoute(item.id)" 
+            class="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-500 ease-out active:scale-95 outline-none"
+            [ngClass]="{
+              'bg-black text-white shadow-md': activeRouteId() === item.id,
+              'text-gray-500 hover:bg-[#fafafa] hover:text-gray-900': activeRouteId() !== item.id
+            }"
+          >
+            <fa-icon 
+              [icon]="item.icon" 
+              class="transition-colors duration-500"
+              [ngClass]="activeRouteId() === item.id ? 'text-white' : 'text-gray-400 group-hover:text-gray-900'"
+            ></fa-icon>
+            
+            <span>{{ item.label }}</span>
+          </button>
+        </li>
+      }
+      
+    </ul>
+  </nav>
+</header>

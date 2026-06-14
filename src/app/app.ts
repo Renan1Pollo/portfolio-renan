@@ -1,12 +1,18 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { HeaderComponent } from './core/layout/header/header';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  imports: [HeaderComponent],
+  template: `
+    <div class="min-h-screen bg-[#fafafa] font-sans relative">
+      <app-header />
+      <main class="pt-32 pb-32 max-w-7xl mx-auto">
+        
+      </main>
+    </div>
+  `
 })
-export class App {
-  protected readonly title = signal('portfolio-renan');
-}
+export class AppComponent {}
